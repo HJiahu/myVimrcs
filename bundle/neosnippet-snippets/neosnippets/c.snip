@@ -93,9 +93,15 @@ alias   #inc2, #include2
 snippet ifndef
 alias   #ifndef
 abbr #ifndef ... #define ... #endif
-	#ifndef $1
-	#define ${1:SYMBOL} ${2:value}
-	#endif
+''    #ifndef $1
+""    #define ${1:#:SYMBOL}
+"#endif${0}
+    #ifndef ${1:`toupper(vim_snippets#Filename('$1_H', 'UNTITLED_H'))`}
+	#define $1
+
+	${0}
+
+	#endif /* end of include guard: $1 */
 
 snippet def
 alias   #def, #define
@@ -151,29 +157,3 @@ abbr fopen("...", "...");
 snippet fgets
 abbr fgets(row, length, file);
     fgets(${0:ROW}, ${1:LENGTH}, ${2:FILE});
-
-
-
-snippet   xkh 
-alias x 
-    (${0:TARGET})
-
-
-snippet   xkh;
-alias x; 
-    (${0:TARGET});
-
-snippet    hk; 
-alias k;
-abbr () {};
-    (${1:#:para})
-    {
-        ${0:TARGET}
-    };
-
-snippet    hk 
-abbr () {}
-    (${1:#:para})
-    {
-        ${0:TARGET}
-    }

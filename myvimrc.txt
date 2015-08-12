@@ -1,13 +1,5 @@
-syntax enable 
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
-"peaksea 
-set history=700
 
-set number
-highlight LineNr ctermfg=blue ctermbg=black guibg=black guifg=cyan
-
+""some script from amix "{{{
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -85,7 +77,6 @@ set foldcolumn=1
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-
 " Set extra options when running in GUI mode
 
 if has("gui_running")
@@ -136,7 +127,7 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
+set nowrap "Wrap lines
 
 
 
@@ -164,8 +155,9 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
+"}}}
 
-
+"setting some plugin "{{{
 "set pathogen
 execute pathogen#infect('bundle/{}', '/home/jiahu/myData/Vimrcs/bundle/{}')
 "set vimim
@@ -203,7 +195,6 @@ set completeopt=longest,menu
 "set sdcv
 nmap ,d <Plug>TranslateIt
 set keywordprg=sdcv\ -0
-command SDCV :Sdcv\ -0
 
 "set winmanager
 let g:winManagerWindowLayout='FileExplorer|TagList'
@@ -211,6 +202,11 @@ nmap wm :WMToggle<cr>
 
 "set autoformate
 nmap nf :Autoformat<CR>ggvG=
+
+"set cscope
+"nnoremap <C-]> :call cscope#findInteractive(expand('<cword>'))<CR>
+"nnoremap <C-l> :call ToggleLocationList()<CR>
+"}}}
 
 "set something from NEO"{{{
 
@@ -309,15 +305,15 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
+			\ "\<Plug>(neosnippet_expand_or_jump)"
+			\: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+			\ "\<Plug>(neosnippet_expand_or_jump)"
+			\: "\<TAB>"
 
 " For conceal markers.
 if has('conceal')
-  set conceallevel=2 concealcursor=niv
+	set conceallevel=2 concealcursor=niv
 endif
 
 "if you want to use snippets from snipmate Enable one of the cmd behand
@@ -330,14 +326,27 @@ endif
 "}}}
 "}}}    NEO
 
+"my Vimrcs"{{{
+colorscheme solarized
+let g:solarized_termcolors=256
+if has("gui_running")
+	set background=dark 
+else
+	set background=dark 
+endif
 
-"""""""""""""""""""""""my Vimrcs"""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable 
+set history=700
+
+set number
+"highlight LineNr ctermfg=blue ctermbg=black guibg=black guifg=cyan
+
+
 "some shortcut of myself
 nmap nd :r! date \+\%F\ \%T<cr>kJ$
 nmap nm :wa <CR>:make<CR>
 "reset <esc> to <A-[>
-imap <A-e> <esc>
+imap <S-Space> <Esc> 
 "set marker 
 set fdm=marker
-
+"}}}

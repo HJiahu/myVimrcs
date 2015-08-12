@@ -1,0 +1,26 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+alias gvim='/data/vim74/bin/gvim  '
+alias clc='cleae'
+alias dict='sdcv -0'
+alias Date='date \+\%F\ \%T '
+alias notes='cd /home/jiahu/myData/ && gvim HelloVim && exit  '
+alias vcodes='cd /home/jiahu/myData/myCodes/c++/ && vim main.cpp &&exit'
+alias gcodes='cd /home/jiahu/myData/myCodes/c++/ && gvim main.cpp &&exit'
+
+
+
