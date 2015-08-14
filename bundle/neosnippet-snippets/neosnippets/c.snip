@@ -55,6 +55,11 @@ abbr        func() {}
         ${0:TARGET}
     }
 
+snippet     declare function
+alias       dfunc
+abbr        func(); 
+    ${1:void} ${2:#:func_name}(${3:#:args}) ;
+         
 snippet     struct
 abbr        struct {}
     struct ${1:#:name} {

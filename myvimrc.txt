@@ -1,4 +1,7 @@
-
+"set pathogen at the first time  
+execute pathogen#infect('bundle/{}', '/home/jiahu/myData/Vimrcs/bundle/{}')
+call pathogen#runtime_append_all_bundles()
+filetype off
 ""some script from amix "{{{
 " Enable filetype plugins
 filetype plugin on
@@ -25,6 +28,8 @@ endif
 
 "Always show current position
 set ruler
+set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
+set statusline=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 
 " Height of the command bar
 set cmdheight=1
@@ -122,12 +127,13 @@ set shiftwidth=4
 set tabstop=4
 
 " Linebreak on 500 characters
+set wrap "Wrap lines
 set lbr
-set tw=500
+set breakat=":"
+set tw=5000
 
 set ai "Auto indent
 set si "Smart indent
-set nowrap "Wrap lines
 
 
 
@@ -158,6 +164,9 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 "}}}
 
 "setting some plugin "{{{
+"set autopair
+let  g:AutoPairsMapCR=0
+
 "set pathogen
 execute pathogen#infect('bundle/{}', '/home/jiahu/myData/Vimrcs/bundle/{}')
 "set vimim
@@ -181,7 +190,7 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 nmap nv :Voom<CR>
 
 "set minibuffexpl
-let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavVim = 0 
 let g:miniBufExplMapWindowNavArrows = 1 
 let g:miniBufExplMapCTabSwitchBufs = 1 
 let g:miniBufExplModSelTarget = 1 
@@ -201,11 +210,14 @@ let g:winManagerWindowLayout='FileExplorer|TagList'
 nmap wm :WMToggle<cr>
 
 "set autoformate
-nmap nf :Autoformat<CR>ggvG=
+nmap nf :Autoformat<CR>
 
-"set cscope
-"nnoremap <C-]> :call cscope#findInteractive(expand('<cword>'))<CR>
-"nnoremap <C-l> :call ToggleLocationList()<CR>
+"set clang-complete
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'clang_complete'
+let g:clang_complete_optional_args_in_snippets=1
+let g:clang_trailing_placeholder=0
+let g:clang_complete_macro=1
 "}}}
 
 "set something from NEO"{{{
@@ -222,7 +234,7 @@ let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
+let g:neocomplete#sources#buffer#max_keyword_width = 21
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
 			\ 'default' : '',
@@ -304,17 +316,20 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-			\ "\<Plug>(neosnippet_expand_or_jump)"
-			\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-			\ "\<Plug>(neosnippet_expand_or_jump)"
-			\: "\<TAB>"
+"如果使能下面的代码，那么tab将优先展开找到的snippet 
+"不使用下面的代码则tab只用来选择下拉信息。
+"imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"			\ "\<Plug>(neosnippet_expand_or_jump)"
+"			\: pumvisible() ? "\<C-n>" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"			\ "\<Plug>(neosnippet_expand_or_jump)"
+"			\: "\<TAB>"
 
 " For conceal markers.
 if has('conceal')
 	set conceallevel=2 concealcursor=niv
 endif
+
 
 "if you want to use snippets from snipmate Enable one of the cmd behand
 " Enable snipMate compatibility feature.
@@ -345,8 +360,10 @@ set number
 "some shortcut of myself
 nmap nd :r! date \+\%F\ \%T<cr>kJ$
 nmap nm :wa <CR>:make<CR>
+nmap n= ggvG=
 "reset <esc> to <A-[>
 imap <S-Space> <Esc> 
+imap <A-o> <Esc>o
 "set marker 
 set fdm=marker
 "}}}

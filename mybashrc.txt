@@ -15,7 +15,7 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 alias gvim='/data/vim74/bin/gvim  '
-alias clc='cleae'
+alias clc='clear'
 alias dict='sdcv -0'
 alias Date='date \+\%F\ \%T '
 alias notes='cd /home/jiahu/myData/ && gvim HelloVim && exit  '
