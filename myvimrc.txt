@@ -164,15 +164,37 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 "}}}
 
 "setting some plugin "{{{
+"set surrend
+
+let g:surround_45 = "/* \r */"
+
 "set autopair
 let  g:AutoPairsMapCR=0
 
-"set pathogen
-execute pathogen#infect('bundle/{}', '/home/jiahu/myData/Vimrcs/bundle/{}')
-"set vimim
-let g:vimim_map = 'tab_as_gi'  
-let g:vimim_mode = 'dynamic' 
+"set regexp for perl
+let g:eregex_default_enable = 0
+let g:eregex_force_case = 1
 
+"set airline 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#fnametruncate = 16
+let g:airline#extensions#tabline#fnamecollapse = 2
+let mapleader=","
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s '
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 "set NERD_tree
 let NERDTreeChDirMode=2
 let NERDTreeShowHidden=0
@@ -190,10 +212,10 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 nmap nv :Voom<CR>
 
 "set minibuffexpl
-let g:miniBufExplMapWindowNavVim = 0 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1 
+"let g:miniBufExplMapWindowNavVim = 0 
+"let g:miniBufExplMapWindowNavArrows = 1 
+"let g:miniBufExplMapCTabSwitchBufs = 1 
+"let g:miniBufExplModSelTarget = 1 
 
 "set A
 nmap na :A<CR>
@@ -206,18 +228,20 @@ nmap ,d <Plug>TranslateIt
 set keywordprg=sdcv\ -0
 
 "set winmanager
-let g:winManagerWindowLayout='FileExplorer|TagList'
-nmap wm :WMToggle<cr>
+"let g:winManagerWindowLayout='FileExplorer|TagList'
+"nmap wm :WMToggle<cr>
 
 "set autoformate
 nmap nf :Autoformat<CR>
+vmap nf :Autoformat<CR>
 
 "set clang-complete
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
 let g:clang_complete_optional_args_in_snippets=1
-let g:clang_trailing_placeholder=0
-let g:clang_complete_macro=1
+let g:clang_trailing_placeholder=1
+let g:clang_complete_macros=1
+let	g:clang_trailing_placeholder=1
 "}}}
 
 "set something from NEO"{{{
@@ -358,9 +382,16 @@ set number
 
 
 "some shortcut of myself
+"my mapleader is , in airline setting 
+nmap <leader>p "+p
+nmap <leader>P "+P
+nmap <leader><C-a> <Esc>ggvG
+
+nmap gb :bnext<CR>
+nmap gB :bprevious<CR>
 nmap nd :r! date \+\%F\ \%T<cr>kJ$
 nmap nm :wa <CR>:make<CR>
-nmap n= ggvG=
+nmap n= mxggvG=`x
 "reset <esc> to <A-[>
 imap <S-Space> <Esc> 
 imap <A-o> <Esc>o
