@@ -55,11 +55,12 @@ abbr        func() {}
         ${0:TARGET}
     }
 
-snippet     declare function
-alias       dfunc
+snippet     function declare 
+alias       funcd
 abbr        func(); 
     ${1:void} ${2:#:func_name}(${3:#:args}) ;
          
+
 snippet     struct
 abbr        struct {}
     struct ${1:#:name} {
@@ -162,3 +163,11 @@ abbr fopen("...", "...");
 snippet fgets
 abbr fgets(row, length, file);
     fgets(${0:ROW}, ${1:LENGTH}, ${2:FILE});
+
+snippet  brace 
+alias    bra 
+regexp     '^\s*'
+    {
+    ${0:TARGET}
+    }
+
