@@ -1,5 +1,11 @@
-"set pathogen at the first time  
-execute pathogen#infect('bundle/{}', '/home/jiahu/myData/Vimrcs/bundle/{}')
+﻿"set pathogen at the first time  
+if has("win32")
+	execute pathogen#infect('bundle/{}', 'C:\vim74\myVimrcs\bundle')
+else
+	execute pathogen#infect('bundle/{}', '/home/jiahu/myData/Vimrcs/bundle/{}')
+endif
+
+
 call pathogen#runtime_append_all_bundles()
 filetype off
 ""some script from amix "{{{
@@ -244,6 +250,11 @@ let g:clang_trailing_placeholder=1
 let g:clang_complete_macros=1
 let	g:clang_trailing_placeholder=1
 let g:clang_conceal_snippets=0
+if has("win32")
+	let g:clang_use_library=1
+	let g:clang_library_path="C:\\Program Files\\LLVM\\bin"
+endif
+
 "}}}
 
 "set something from NEO"{{{
@@ -380,6 +391,7 @@ syntax enable
 set history=700
 
 set number
+set cm=blowfish2  "set encription method
 "highlight LineNr ctermfg=blue ctermbg=black guibg=black guifg=cyan
 
 
