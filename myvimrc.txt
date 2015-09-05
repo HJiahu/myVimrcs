@@ -362,10 +362,6 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 "			\ "\<Plug>(neosnippet_expand_or_jump)"
 "			\: "\<TAB>"
 
-" For conceal markers.
-if has('conceal')
-	set conceallevel=2 concealcursor=niv
-endif
 
 
 "if you want to use snippets from snipmate Enable one of the cmd behand
@@ -391,7 +387,7 @@ syntax enable
 set history=700
 
 set number
-set cm=blowfish2  "set encription method
+set cm=blowfish  "set encription method
 "highlight LineNr ctermfg=blue ctermbg=black guibg=black guifg=cyan
 
 
