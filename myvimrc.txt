@@ -1,4 +1,5 @@
-﻿"set pathogen at the first time  
+﻿
+"set pathogen at the first time  
 if has("win32")
 	execute pathogen#infect('bundle/{}', 'C:\vim74\myVimrcs\bundle')
 else
@@ -27,6 +28,7 @@ source $VIMRUNTIME/menu.vim
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
 	map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
+	map <F5> <Esc>:!sort.exe<CR>
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
 	set wildignore+=.git\*,.hg\*,.svn\*
@@ -397,6 +399,9 @@ nmap <leader>p "+p
 nmap <leader>P "+P
 nmap <leader><C-a> <Esc>ggvG
 command Chrome !google-chrome %&
+ab mdan [\[Index\]](#Index) <span id="A"/>              
+ab mdin <span id="Index"/>               
+ab mdti [A](#B)              
 
 nmap gb :bnext<CR>
 nmap gB :bprevious<CR>
