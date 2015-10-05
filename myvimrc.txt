@@ -1,12 +1,6 @@
-﻿"set pathogen at the first time  
-if has("win32")
-	execute pathogen#infect('bundle/{}', 'C:\vim74\myVimrcs\bundle')
-else
-	execute pathogen#infect('bundle/{}', '/home/jiahu/myData/Vimrcs/bundle/{}')
-endif
-
-
-call pathogen#runtime_append_all_bundles()
+﻿
+"set pathogen at the first time  
+silent call pathogen#runtime_append_all_bundles()
 filetype off
 ""some script from amix "{{{
 " Enable filetype plugins
@@ -27,7 +21,6 @@ source $VIMRUNTIME/menu.vim
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
 	map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
-	map <F5> <Esc>:!main.exe<CR>
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
 	set wildignore+=.git\*,.hg\*,.svn\*
@@ -138,8 +131,7 @@ set wrap "Wrap lines
 set lbr
 set breakat=":"
 set tw=5000
-noremap  <buffer> <silent> k gk
-noremap  <buffer> <silent> j gj
+
 set ai "Auto indent
 set si "Smart indent
 
@@ -250,12 +242,6 @@ let g:clang_complete_optional_args_in_snippets=1
 let g:clang_trailing_placeholder=1
 let g:clang_complete_macros=1
 let	g:clang_trailing_placeholder=1
-let g:clang_conceal_snippets=0
-if has("win32")
-	let g:clang_use_library=1
-	let g:clang_library_path="C:\\Program Files\\LLVM\\bin"
-endif
-
 "}}}
 
 "set something from NEO"{{{
@@ -363,6 +349,10 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 "			\ "\<Plug>(neosnippet_expand_or_jump)"
 "			\: "\<TAB>"
 
+" For conceal markers.
+if has('conceal')
+	set conceallevel=2 concealcursor=niv
+endif
 
 
 "if you want to use snippets from snipmate Enable one of the cmd behand
@@ -379,7 +369,7 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 colorscheme solarized
 let g:solarized_termcolors=256
 if has("gui_running")
-	set background=dark 
+	set background=light
 else
 	set background=dark 
 endif
@@ -388,23 +378,23 @@ syntax enable
 set history=700
 
 set number
-set cm=blowfish  "set encription method
 "highlight LineNr ctermfg=blue ctermbg=black guibg=black guifg=cyan
 
 
 "some shortcut of myself
 "my mapleader is , in airline setting 
+set lines=33 columns=108
 nmap <leader>p "+p
 nmap <leader>P "+P
 nmap <leader><C-a> <Esc>ggvG
-command Chrome !google-chrome %&
-ab mdan [\[Index\]](#Index) <span id="A"/>              
-ab mdin <span id="Index"/>               
-ab mdti [A](#B)              
+ab mdti [a](#b)
+ab mdin <span id="Index"/>
+ab mdan [\[Index\]](#Index) <span id="a"/>      
+
 
 nmap gb :bnext<CR>
 nmap gB :bprevious<CR>
-nmap nd :r! date   \+\%F\ \%T<cr>kJ$
+nmap nd :r! date \+\%F\ \%T<cr>kJ$
 nmap nm :wa <CR>:make<CR>
 nmap n= mxggvG=`x
 "reset <esc> to <A-[>
